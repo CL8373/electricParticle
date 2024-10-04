@@ -8,15 +8,19 @@ class FieldParticle {
   double vy = 0; // Velocity in Y
   double mass;   // Mass of the particle
   double radius; // Radius for visual representation
+  double ax = 0; // Reset acceleration
+  double ay = 0;
+  double fx = 0; // Reset force
+  double fy = 0;
   static const double maxVelocity = 1; // Maximum velocity limit
   static const double interactionDistance = 50; // Distance at which particles influence each other
-
   FieldParticle(this.x, this.y, this.charge, {this.mass = 1, this.radius = 10});
 
   void calculateForce(List<FieldParticle> particles) {
-    double ax = 0; // Reset acceleration
-    double ay = 0;
-
+    ax = 0; // Reset acceleration
+    ay = 0;
+    fx = 0; // Reset force
+    fy = 0;
     for (FieldParticle other in particles) {
       if (other != this) {
         double dx = other.x - x;
